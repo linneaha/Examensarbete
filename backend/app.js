@@ -18,4 +18,4 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 // routes
 const taskRouter = require("./routes/taskRoutes.js");
-app.use("/", taskRouter);
+app.use("/api/tasks", taskRouter);

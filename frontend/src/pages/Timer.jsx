@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import Stopwatch from "../components/Stopwatch";
 
-function Timer(props) {
+const Timer = () => {
   return (
     <div>
-      
+      <Stopwatch />
     </div>
   );
-}
+};
 
 export default Timer;

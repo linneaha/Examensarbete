@@ -1,15 +1,54 @@
+/* Nav */
+
 nav {
-    background-color: lightgrey;
-    display: flex;
-    flex-direction: row;
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 nav li {
-    list-style: none;
-    display: inline;
-    margin-right: 50px;
+  list-style: none;
+  display: inline;
+  margin-right: 50px;
 }
 
 .navIcon:hover {
-    color:grey;
+  color: grey;
+}
+
+/* Timer */
+
+.timerButtonFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  background-color: white;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin: 20px;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.numbers {
+  margin: 20px;
+  text-align: center;
+}
+
+/* Stats */
+
+.statsDiv {
+    margin: 0 auto;
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 10%;
+    width: 100px;
 }
