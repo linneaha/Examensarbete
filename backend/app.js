@@ -1,7 +1,7 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import bodyParser from "body-parser";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bodyParser = require("body-parser")
 
 const app = express();
 
@@ -28,5 +28,5 @@ mongoose
   .catch((error) => console.log(`${error} did not connect`));
 
 // routes
-import statisticsRouter from "./routes/statistics.js";
+const statisticsRouter = require("./routes/statistics.js");
 app.use("/", statisticsRouter);
