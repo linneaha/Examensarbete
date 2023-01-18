@@ -7,20 +7,20 @@ import { GrPowerReset } from "react-icons/gr";
 
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
-  const [running, setRunning] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
   const [isBreak, setIsBreak] = useState(false);
 
   useEffect(() => {
     let interval;
-    if (running) {
+    if (isRunning) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 10);
       }, 10);
-    } else if (!running) {
+    } else if (!isRunning) {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [running]);
+  }, [isRunning]);
 
   return (
     <div className="stopwatch">
@@ -30,12 +30,12 @@ const Stopwatch = () => {
         <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
       </div>
       <div className="buttons">
-        {!running ? (
-          <button onClick={() => setRunning(true)}>
+        {!isRunning ? (
+          <button onClick={() => setIsRunning(true)}>
             <IoPlay />
           </button>
         ) : (
-          <button onClick={() => setRunning(false)}>
+          <button onClick={() => setIsRunning(false)}>
             <IoStop />
           </button>
         )}
