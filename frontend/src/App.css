@@ -94,3 +94,40 @@ h1 {
 }
 
 /* Activity Modal */
+
+.addNewActivityModal {
+  padding: 20px;
+}
+
+form {
+  background-color: lightgrey;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0 20px 0;
+}
+
+form > * {
+  margin-top: 15px;
+}
+
+input {
+  border-radius: 12px;
+  margin-top: 5px;
+  border: none;
+  width: 60%;
+  height: 35px;
+}
+
+form button {
+  background-color: black;
+  color: white;
+}
+
+.exitBtn {
+  align-self: end;
+  margin-right: 20px;
+}
