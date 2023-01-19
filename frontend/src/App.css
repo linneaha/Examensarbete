@@ -1,10 +1,8 @@
 * {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
-
-
 
 /* Nav */
 
@@ -32,7 +30,7 @@ nav li {
   flex-direction: row;
 }
 
-button {
+.controlButton {
   background-color: white;
   text-align: center;
   border: 1px solid grey;
@@ -54,22 +52,21 @@ button {
 /* Stats */
 
 .statsDiv {
-    margin: 0 auto;
-    text-align: center;
-    background-color: lightgrey;
-    border-radius: 10%;
-    width: 100px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: lightgrey;
+  border-radius: 10%;
+  width: 100px;
 }
 
 /* Activities */
 
 .activityListWrapper {
-text-align: center;
+  text-align: center;
 }
 
 .activityList {
   padding: 0;
-
 }
 
 .activityList li {

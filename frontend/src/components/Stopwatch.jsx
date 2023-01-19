@@ -31,27 +31,27 @@ const Stopwatch = () => {
       </div>
       <div className="buttons">
         {!isRunning ? (
-          <button onClick={() => setIsRunning(true)}>
+          <button className="controlButton" onClick={() => setIsRunning(true)}>
             <IoPlay />
           </button>
         ) : (
-          <button onClick={() => setIsRunning(false)}>
+          <button className="controlButton" onClick={() => setIsRunning(false)}>
             <IoStop />
           </button>
         )}
-        <button onClick={() => setTime(0)}>
+        <button className="controlButton" onClick={() => setTime(0)}>
           <GrPowerReset />
         </button>
         {!isBreak ? (
-          <button onClick={() => setIsBreak(true)}>
+          <button className="controlButton" onClick={() => setIsBreak(true)}>
             <MdOutlineFreeBreakfast />
           </button>
         ) : (
-          <button onClick={() => setIsBreak(false)}>
+          <button className="controlButton" onClick={() => setIsBreak(false)}>
             <RxResume />
           </button>
         )}
-        <button>
+        <button className="controlButton">
           <IoMdCheckmark />
         </button>
       </div>
