@@ -31,12 +31,7 @@ const Activities = () => {
           <ul className="activityList">
             {activities.map((activity) => (
               <li key={activity._id}>
-                <div className="listItemDiv">
-                  <img src="https://via.placeholder.com/50" alt="icon" />
-                  {capitalizeFirstLetter(activity.name)}
-                  <RiPlayCircleFill />
-                  <RiMore2Fill />
-                </div>
+                <ActivityItem id={activity._id} name={activity.name} />
               </li>
             ))}
           </ul>

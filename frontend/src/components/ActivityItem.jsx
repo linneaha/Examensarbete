@@ -1,9 +1,9 @@
 import React from "react";
 import { RiPlayCircleFill, RiMore2Fill } from "react-icons/ri";
 import { useState } from "react";
-import MoreModal from "./MoreModal";
+import More from "./More";
 
-const ActivityItem = ({ name }) => {
+const ActivityItem = ({ id, name }) => {
   const [openModal, setOpenModal] = useState(false);
 
   function capitalizeFirstLetter(string) {
@@ -18,7 +18,12 @@ const ActivityItem = ({ name }) => {
 
       <RiMore2Fill onClick={() => setOpenModal(true)} />
       <div>
-        <MoreModal open={openModal} close={() => setOpenModal(false)} />
+        <More
+          id={id}
+          name={name}
+          open={openModal}
+          close={() => setOpenModal(false)}
+        />
       </div>
     </div>
   );
