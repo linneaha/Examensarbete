@@ -1,3 +1,11 @@
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
+
+
+
 /* Nav */
 
 nav {
@@ -51,4 +59,36 @@ button {
     background-color: lightgrey;
     border-radius: 10%;
     width: 100px;
+}
+
+/* Activities */
+
+.activityListWrapper {
+text-align: center;
+}
+
+.activityList {
+  padding: 0;
+
+}
+
+.activityList li {
+  list-style: none;
+}
+
+.addActivityBtn {
+  background-color: cadetblue;
+  border-radius: 12px;
+  width: 50%;
+}
+
+.listItemDiv {
+  background-color: lightgrey;
+  margin: 15px;
+  border-radius: 12px;
+}
+
+h1 {
+  margin-left: 15px;
+  text-align: left;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { RiTimer2Line, RiAddCircleLine, RiUser3Line } from "react-icons/ri";
+import { RiTimer2Line, RiUser3Line, RiListUnordered } from "react-icons/ri";
 import { IoStatsChart } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -19,8 +19,8 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link>
-              <RiAddCircleLine className="navIcon"/>
+            <Link to="/activities">
+              <RiListUnordered className="navIcon"/>
             </Link>
           </li>
           <li>
