@@ -1,12 +1,22 @@
 import React from "react";
+import axios from "axios";
 import { useState } from "react";
 import Modal from "./Modal";
 
-const EditActivityForm = ({ onClose }) => {
+const EditActivityForm = ({ onClose, id }) => {
   const [newName, setNewName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const name = {
+      newName,
+    };
+
+    axios.patch(`http://localhost:3001/api/activities`, name, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   return (
