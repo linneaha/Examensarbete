@@ -6,7 +6,7 @@ import ActivityConfig from "./ActivityConfig";
 
 const ActivityItem = ({ id, name }) => {
   const [modalIsShown, setModalIsShown] = useState(false);
-  console.log(id, name);
+
   const navigate = useNavigate();
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
