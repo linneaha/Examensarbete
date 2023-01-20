@@ -26,7 +26,7 @@ const ActivityConfig = (props) => {
           <div onClick={handleDeleteForm}>Delete</div>
           {showDeleteForm && <DeleteActivityForm onClose={props.onClose} />}
 
-          <button onClick={props.onClose}>Close</button>
+          <button onClick={props.onClose}>Cancel</button>
         </div>
       </div>
     </Modal>

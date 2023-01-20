@@ -20,8 +20,10 @@ const EditActivityForm = ({ onClose }) => {
           onChange={(e) => setNewName(e.target.value)}
           value={newName}
         />
-        <button onClick={onClose}>Close</button>
-        <button type="submit">Save</button>
+        <div>
+          <button onClick={onClose}>Cancel</button>
+          <button type="submit">Save</button>
+        </div>
       </form>
     </Modal>
   );
