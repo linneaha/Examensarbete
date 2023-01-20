@@ -5,6 +5,7 @@ import EditActivityForm from "./EditActivityForm";
 import DeleteActivityForm from "./DeleteActivityForm";
 
 const ActivityConfig = (props) => {
+  console.log(props);
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
 
@@ -21,10 +22,14 @@ const ActivityConfig = (props) => {
       <div>
         <div className="modalContent">
           <div onClick={handleEditForm}>Edit</div>
-          {showEditForm && <EditActivityForm onClose={props.onClose} />}
+          {showEditForm && (
+            <EditActivityForm id={props.id} onClose={props.onClose} />
+          )}
 
           <div onClick={handleDeleteForm}>Delete</div>
-          {showDeleteForm && <DeleteActivityForm onClose={props.onClose} />}
+          {showDeleteForm && (
+            <DeleteActivityForm id={props.id} onClose={props.onClose} />
+          )}
 
           <button onClick={props.onClose}>Cancel</button>
         </div>

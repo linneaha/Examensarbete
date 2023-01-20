@@ -1,11 +1,17 @@
 import axios from "axios";
 import Modal from "./Modal";
 
-const DeleteActivityForm = ({ onClose, name, id }) => {
-  console.log(name, id);
+const DeleteActivityForm = ({ onClose, id }) => {
+  console.log(id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    axios.delete(`http://localhost:3001/api/activities/${id}`, id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   return (

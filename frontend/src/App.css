@@ -72,6 +72,9 @@ nav li {
 .activityList li {
   list-style: none;
 }
+.activityBtn {
+  all: unset;
+}
 
 .addActivityBtn {
   background-color: cadetblue;
