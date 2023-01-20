@@ -12,7 +12,7 @@ const AddActivityForm = ({ toggleModal }) => {
     const activity = {
       name,
     };
-    
+
     axios
       .post("http://localhost:3001/api/activities", activity, {
         headers: {
@@ -25,7 +25,7 @@ const AddActivityForm = ({ toggleModal }) => {
   return (
     <div className="addNewActivityModal">
       <h1>Add new activity</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="addActivityForm" onSubmit={handleSubmit}>
         <GrFormClose onClick={toggleModal} className="exitBtn" />
         <label htmlFor="name">Name</label>
         <input

@@ -85,7 +85,7 @@ nav li {
   border-radius: 12px;
 }
 
-h1 {
+.addNewActivityModal h1 {
   margin-left: 15px;
   text-align: left;
 }
@@ -96,7 +96,7 @@ h1 {
   padding: 20px;
 }
 
-form {
+.addActivityForm {
   background-color: lightgrey;
   border-radius: 12px;
   display: flex;
@@ -107,7 +107,7 @@ form {
   margin: 20px 0 20px 0;
 }
 
-form > * {
+.addActivityForm > * {
   margin-top: 15px;
 }
 
@@ -119,7 +119,7 @@ input {
   height: 35px;
 }
 
-form button {
+.addActivityForm button {
   background-color: black;
   color: white;
 }
@@ -127,4 +127,46 @@ form button {
 .exitBtn {
   align-self: end;
   margin-right: 20px;
+}
+
+/* Modal */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  /* background-color: rgba(0, 0, 0, 0.75); */
+}
+
+.modal {
+  position: fixed;
+  top: 20vh;
+  left: 5%;
+  width: 90%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
