@@ -12,7 +12,6 @@ const EditActivityForm = ({ onClose, id }) => {
     const newName = {
       name,
     };
-
     axios.put(`http://localhost:3001/api/activities/${id}`, newName, {
       headers: {
         "Content-Type": "application/json",
