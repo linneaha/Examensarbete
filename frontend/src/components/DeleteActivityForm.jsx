@@ -11,7 +11,7 @@ const DeleteActivityForm = ({ onClose, id }) => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
+    })
   };
 
   return (

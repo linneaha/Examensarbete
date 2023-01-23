@@ -4,15 +4,15 @@ import { useState } from "react";
 import Modal from "./Modal";
 
 const EditActivityForm = ({ onClose, id }) => {
-  const [newName, setNewName] = useState("");
+  console.log(id);
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const name = {
-      newName,
+    const newName = {
+      name,
     };
-
-    axios.patch(`http://localhost:3001/api/activities`, name, {
+    axios.put(`http://localhost:3001/api/activities/${id}`, newName, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -27,8 +27,8 @@ const EditActivityForm = ({ onClose, id }) => {
         <input
           type="text"
           id="newName"
-          onChange={(e) => setNewName(e.target.value)}
-          value={newName}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
         <div>
           <button onClick={onClose}>Cancel</button>
