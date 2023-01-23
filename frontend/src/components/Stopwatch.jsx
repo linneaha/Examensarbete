@@ -10,6 +10,10 @@ const Stopwatch = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [isBreak, setIsBreak] = useState(false);
 
+  let minutes = ("0" + Math.floor((time / 60000) % 60)).slice(-2);
+  let seconds = ("0" + Math.floor((time / 1000) % 60)).slice(-2);
+  let millis = ("0" + ((time / 10) % 100)).slice(-2);
+
   useEffect(() => {
     let interval;
     if (isRunning) {
@@ -25,9 +29,9 @@ const Stopwatch = () => {
   return (
     <div className="stopwatch">
       <div className="numbers">
-        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-        <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+        <span>{minutes}:</span>
+        <span>{seconds}:</span>
+        <span>{millis}</span>
       </div>
       <div className="buttons">
         {!isRunning ? (
