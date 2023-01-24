@@ -1,42 +1,36 @@
-const Task = require("../models/activityModel");
+const Activity = require("../models/activityModel");
 
-const getTasks = async (req, res) => {
-  const tasks = await Task.find();
-  res.status(200).json(tasks);
+const getActivities = async (req, res) => {
+  const activity = await Activity.find();
+  res.status(200).json(activity);
 };
 
-const createTask = async (req, res) => {
-  const task = await Task.create({
+const createActivity = async (req, res) => {
+  const activity = await Activity.create({
     name: req.body.name,
   });
 
-  res.status(200).json(task);
+  res.status(200).json(activity);
 };
 
-const updateTask = async (req, res) => {
-  // const task = await Task.findById(req.params.id);
+const updateActivity = async (req, res) => {
+  const updatedActivity = await Activity.findByIdAndUpdate(
+    req.params.id,
+    req.body
+  );
 
-  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body);
-
-  res.status(200).json(updatedTask);
+  res.status(200).json(updatedActivity);
 };
 
-const deleteTask = async (req, res) => {
-  const task = await Task.findById(req.params.id);
-  await task.remove();
+const deleteActivity = async (req, res) => {
+  const activity = await Activity.findById(req.params.id);
+  await activity.remove();
   res.status(200).json({ id: req.params.id });
 };
-// const deleteTask = async (req, res) => {
-//   try {
-//     const { id: id } = req.params;
-//     console.log(id);
-//     if (!mongoose.Types.ObjectId.isValid(id))
-//       return res.status(404).json({ msg: `No task with id :${id}` });
-//     const task = await Task.findOneAndDelete({ _id: id });
-//     res.status(200).json(task);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
-module.exports = { getTasks, createTask, deleteTask, updateTask };
+module.exports = {
+  getActivities,
+  createActivity,
+  updateActivity,
+  deleteActivity,
+};

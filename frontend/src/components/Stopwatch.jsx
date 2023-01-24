@@ -30,7 +30,6 @@ const Stopwatch = () => {
 
   const saveAmountOfBreaks = () => {
     setAmountOfBreaks(amountOfBreaks + 1);
-    console.log(amountOfBreaks);
   };
 
   const amountOfClicks = () => {
@@ -41,7 +40,6 @@ const Stopwatch = () => {
     amountOfClicks();
     setIsRunning(false);
     if (click === 0) {
-      console.log("one click");
       setTimeBeforeFirstBreak(time);
     }
   };
@@ -58,8 +56,7 @@ const Stopwatch = () => {
 
   const saveDataForActivity = () => {
     savedTimeForActivities.push(newSave);
-    console.log(savedTimeForActivities);
-  }
+  };
 
   useEffect(() => {
     let interval;
@@ -89,23 +86,18 @@ const Stopwatch = () => {
     return () => clearInterval(interval);
   }, [isRunning]);
 
-  // console.log(timeBeforeFirstBreak);
-  // console.log(activeTime);
-
-  console.log(totalBreakTime);
-
   return (
     <div className="stopwatch">
       <div className="numbers">
-        <span>{minutes}:</span>
-        <span>{seconds}:</span>
-        <span>{millis}</span>
+        <span>{("0" + Math.floor(time / 3600000)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
       </div>
       <div className="numbers">
         <h3>Break</h3>
+        <span>{("0" + Math.floor(breakTime / 3600000)).slice(-2)}:</span>
         <span>{("0" + Math.floor((breakTime / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((breakTime / 1000) % 60)).slice(-2)}:</span>
-        <span>{("0" + ((breakTime / 10) % 100)).slice(-2)}</span>
+        <span>{("0" + Math.floor((breakTime / 1000) % 60)).slice(-2)}</span>
       </div>
       <div className="buttons">
         {!isRunning ? (
@@ -121,10 +113,7 @@ const Stopwatch = () => {
           <GrPowerReset />
         </button>
         {!isBreak ? (
-          <button
-            className="controlButton"
-            onClick={() => startBreak()}
-          >
+          <button className="controlButton" onClick={() => startBreak()}>
             <MdOutlineFreeBreakfast />
           </button>
         ) : (
@@ -132,9 +121,10 @@ const Stopwatch = () => {
             <RxResume />
           </button>
         )}
-        <button className="controlButton" onClick={() =>  saveDataForActivity() }>
+        <button className="controlButton" onClick={() => saveDataForActivity()}>
           <IoMdCheckmark />
         </button>
+        <div style={{ width: 150, marginLeft: 550 }}></div>
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
-const taskSchema = mongoose.Schema({
+const activitySchema = mongoose.Schema({
   name: {
-    type: String
+    type: String,
+    required: true,
   },
 });
 
-module.exports = mongoose.model("Task", taskSchema);
+module.exports = mongoose.model("Activity", activitySchema);
