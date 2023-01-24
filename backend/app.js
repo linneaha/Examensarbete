@@ -19,3 +19,6 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 // routes
 const activityRouter = require("./routes/activityRoutes.js");
 app.use("/api/activities", activityRouter);
+
+const statsRouter = require("./routes/statsRoutes.js");
+app.use("/api/stats", statsRouter);
