@@ -7,8 +7,7 @@ const statsSchema = mongoose.Schema({
   amountOfBreaks: Number,
   activityId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "Task",
+    ref: "Activities",
   },
 });
 
