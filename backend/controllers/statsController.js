@@ -25,7 +25,6 @@ const saveStats = (req, res) => {
 
 module.exports = { getStats, saveStats };
 
-
 // const saveStats = async (req, res) => {
 //   const stats = await Stats.create(req.body);
 //   Activity.findByIdAndUpdate(stats.activityId).push(stats._id)

@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import { RxResume } from "react-icons/rx";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoPlay, IoStop } from "react-icons/io5";
@@ -11,22 +13,31 @@ const Stopwatch = () => {
   const [isBreak, setIsBreak] = useState(false);
   const [breakTime, setBreakTime] = useState(0);
 
-  const [activeTime, setActiveTime] = useState(0);
   const [totalBreakTime, setTotalBreakTime] = useState(0);
   const [timeBeforeFirstBreak, setTimeBeforeFirstBreak] = useState(0);
 
-  const savedTimeForActivities = [];
-
-  const newSave = {
-    activity: "",
-    timeBeforeFirstBreak,
-    activeTime: time,
-    totalBreakTime,
-  };
-
   const [click, setClick] = useState(0);
-
   const [amountOfBreaks, setAmountOfBreaks] = useState(0);
+
+  const location = useLocation();
+
+  const saveDataForActivity = () => {
+    const newStats = {
+      totalActiveTime: time,
+      totalBreakTime,
+      timeBeforeFirstBreak,
+      amountOfBreaks,
+      activityId: location.state.activityId,
+    };
+
+    axios
+      .post("http://localhost:3001/api/stats", newStats, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+     
+  };
 
   const saveAmountOfBreaks = () => {
     setAmountOfBreaks(amountOfBreaks + 1);
@@ -52,10 +63,6 @@ const Stopwatch = () => {
   const saveBreakTime = () => {
     setIsBreak(false);
     setTotalBreakTime(breakTime);
-  };
-
-  const saveDataForActivity = () => {
-    savedTimeForActivities.push(newSave);
   };
 
   useEffect(() => {
@@ -84,6 +91,7 @@ const Stopwatch = () => {
 
   return (
     <div className="stopwatch">
+      <h1>{!location.state ? null : location.state.activityName}</h1>
       <div className="numbers">
         <span>{("0" + Math.floor(time / 3600000)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
@@ -120,8 +128,7 @@ const Stopwatch = () => {
         <button className="controlButton" onClick={() => saveDataForActivity()}>
           <IoMdCheckmark />
         </button>
-        <div style={{ width: 150, marginLeft: 550}}>
-      </div>
+        <div style={{ width: 150, marginLeft: 550 }}></div>
       </div>
     </div>
   );

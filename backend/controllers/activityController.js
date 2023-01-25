@@ -2,7 +2,7 @@ const Activity = require("../models/activityModel");
 const  Stats  = require("../models/statsModel");
 
 const getActivities = async (req, res) => {
-  const activity = await Activity.find();
+  const activity = await Activity.find().populate("stats");
   res.status(200).json(activity);
 };
 
@@ -29,15 +29,11 @@ const deleteActivity = async (req, res) => {
   res.status(200).json({ id: req.params.id });
 };
 
-const getAllStats = async (req, res) => {
-  let findActivity = await Activity.findById(req.params.id).populate("stats");
-  res.json(findActivity);
-}
-
 module.exports = {
   getActivities,
   createActivity,
   updateActivity,
   deleteActivity,
-  getAllStats,
 };
+
+// const activity = await Activity.findById(ID).populate("stats");

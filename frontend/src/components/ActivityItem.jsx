@@ -19,8 +19,14 @@ const ActivityItem = ({ id, name }) => {
   };
 
   const handleStartButton = () => {
-    navigate("/");
+    navigate("/", {
+      state: {
+        activityId: id,
+        activityName:name,
+      }
+    });
   };
+
   return (
     <div className="listItemDiv">
       <img src="https://via.placeholder.com/50" alt="icon" />
