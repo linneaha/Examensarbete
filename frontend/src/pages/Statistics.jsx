@@ -11,13 +11,51 @@ const Statistics = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const convertTime = (num) => {
+    var minutes = Math.floor(num / 60000);
+    var seconds = ((num % 60000) / 1000).toFixed(0);
+    var hours = minutes % 60;
+    return (
+      hours +
+      (hours < 10 ? "0" : "") +
+      ":" +
+      minutes +
+      (minutes < 10 ? "0" : "") +
+      ":" +
+      (seconds < 10 ? "0" : "") +
+      seconds
+    );
+  };
+
+  const calculateAverageTime = (arr1, arr2) => {};
+
+  let averageStatsForActivity = stats.map((stat) => ({
+    name: stat.name,
+    averageActiveTime:
+      stat.stats
+        .map((stat) => stat.totalActiveTime)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
+    averageBreakTime:
+      stat.stats
+        .map((stat) => stat.totalBreakTime)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
+    averageTimeBeforeFirstBreak:
+      stat.stats
+        .map((stat) => stat.timeBeforeFirstBreak)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
+    averageAmountOfBreaks:
+      stat.stats
+        .map((stat) => stat.amountOfBreaks)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
+  }));
+
   return (
-    <div className="statsDiv">
+    <div className="statsWrapper">
       <h1>Statistik</h1>
-      {stats.map((stat) => (
-        <div key={stat._id}>
-          <p>{stat.name}</p>
-          <p>Aktiv tid: {stat.stats[0].totalActiveTime}</p>
+      {averageStatsForActivity.map((stat, i) => (
+        <div key={i}>
+          <h3>{stat.name}</h3>
+          <p>Average active time: {convertTime(stat.averageActiveTime)}</p>
         </div>
       ))}
     </div>

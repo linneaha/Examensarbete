@@ -12,12 +12,10 @@ const Stopwatch = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [isBreak, setIsBreak] = useState(false);
   const [breakTime, setBreakTime] = useState(0);
-
   const [totalBreakTime, setTotalBreakTime] = useState(0);
   const [timeBeforeFirstBreak, setTimeBeforeFirstBreak] = useState(0);
-
-  const [click, setClick] = useState(0);
   const [amountOfBreaks, setAmountOfBreaks] = useState(0);
+  const [click, setClick] = useState(0);
 
   const location = useLocation();
 
@@ -30,13 +28,11 @@ const Stopwatch = () => {
       activityId: location.state.activityId,
     };
 
-    axios
-      .post("http://localhost:3001/api/stats", newStats, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-     
+    axios.post("http://localhost:3001/api/stats", newStats, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   const saveAmountOfBreaks = () => {
