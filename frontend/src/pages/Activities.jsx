@@ -7,11 +7,7 @@ import AddActivityForm from "../components/AddActivityForm";
 const Activities = () => {
   const [activities, setActivities] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
+  
   let toggleModal = () => {
     setOpenModal(!openModal);
   };
