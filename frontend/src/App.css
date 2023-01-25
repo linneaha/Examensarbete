@@ -51,10 +51,9 @@ nav li {
 
 /* Stats */
 
-.statsDiv {
+.statsWrapper {
   margin: 0 auto;
   text-align: center;
-  background-color: lightgrey;
   border-radius: 10%;
   width: 100px;
 }
@@ -77,9 +76,47 @@ nav li {
 }
 
 .addActivityBtn {
-  background-color: cadetblue;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -0.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
   border-radius: 12px;
-  width: 50%;
+}
+
+.addActivityBtn:focus {
+  color: #171e29;
+}
+
+.addActivityBtnhover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+.addActivityBtn:active {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
 }
 
 .listItemDiv {
@@ -123,8 +160,13 @@ input {
 }
 
 .addActivityForm button {
+  margin-bottom: 10px;
   background-color: black;
   color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: none;
 }
 
 .exitBtn {
