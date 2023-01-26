@@ -6,17 +6,16 @@
 
 /* Nav */
 
-nav {
+nav ul {
   background-color: lightgrey;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 nav li {
   list-style: none;
   display: inline;
-  margin-right: 50px;
 }
 
 .navIcon:hover {
@@ -55,7 +54,7 @@ nav li {
   margin: 0 auto;
   text-align: center;
   border-radius: 10%;
-  width: 100px;
+  padding: 10px;
 }
 
 /* Activities */

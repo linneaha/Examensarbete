@@ -4,7 +4,7 @@ import axios from "axios";
 
 const AddActivityForm = ({ toggleModal }) => {
   const [name, setName] = useState("");
-  const [img, setImg] = useState("");
+  // const [img, setImg] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
