@@ -59,6 +59,14 @@ const BarChart = ({ averageStatsForActivity }) => {
       <Bar
         data={activeTimeData}
         options={{
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: "minutes",
+              },
+            },
+          },
           plugins: {
             title: {
               display: true,
@@ -73,6 +81,14 @@ const BarChart = ({ averageStatsForActivity }) => {
       <Bar
         data={breakTimeData}
         options={{
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: "minutes",
+              },
+            },
+          },
           plugins: {
             title: {
               display: true,
@@ -87,6 +103,14 @@ const BarChart = ({ averageStatsForActivity }) => {
       <Bar
         data={amountOfBreaksData}
         options={{
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: "minutes",
+              },
+            },
+          },
           plugins: {
             title: {
               display: true,
