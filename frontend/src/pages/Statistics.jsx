@@ -18,40 +18,34 @@ const Statistics = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  let averageStatsForActivity = stats.map((stat) => ({
+  let filteredStats = stats.filter((stat) => stat.stats.length !== 0);
+
+  let averageStatsForActivity = filteredStats.map((stat) => ({
     name: capitalizeFirstLetter(stat.name),
     averageActiveTime:
-      stat.stats.length === 0
-        ? 0
-        : stat.stats
-            .map((stat) => stat.totalActiveTime)
-            .reduce((prev, curr) => prev + curr) / stat.stats.length,
+      stat.stats
+        .map((stat) => stat.totalActiveTime)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
     averageBreakTime:
-      stat.stats.length === 0
-        ? 0
-        : stat.stats
-            .map((stat) => stat.totalBreakTime)
-            .reduce((prev, curr) => prev + curr) / stat.stats.length,
+      stat.stats
+        .map((stat) => stat.totalBreakTime)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
     averageTimeBeforeFirstBreak:
-      stat.stats.length === 0
-        ? 0
-        : stat.stats
-            .map((stat) => stat.timeBeforeFirstBreak)
-            .reduce((prev, curr) => prev + curr) / stat.stats.length,
+      stat.stats
+        .map((stat) => stat.timeBeforeFirstBreak)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
     averageAmountOfBreaks:
-      stat.stats.length === 0
-        ? 0
-        : stat.stats
-            .map((stat) => stat.amountOfBreaks)
-            .reduce((prev, curr) => prev + curr) / stat.stats.length,
+      stat.stats
+        .map((stat) => stat.amountOfBreaks)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
   }));
 
-  console.log(averageStatsForActivity);
+  // console.log(averageStatsForActivity);
 
   return (
     <div className="statsWrapper">
       <h1>Statistik</h1>
-      <BarChart averageStatsForActivity={averageStatsForActivity}/>
+      <BarChart averageStatsForActivity={averageStatsForActivity} />
     </div>
   );
 };
