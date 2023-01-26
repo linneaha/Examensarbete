@@ -4,16 +4,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityConfig from "./ActivityConfig";
 
-const ActivityItem = ({ id, name }) => {
+const ActivityItem = ({ id, name, deleteActivity }) => {
   const [modalIsShown, setModalIsShown] = useState(false);
 
   const navigate = useNavigate();
-  function capitalizeFirstLetter(string) {
+
+  const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  };
+
   const showModalHandler = () => {
     setModalIsShown(true);
   };
+
   const hideModalHandler = () => {
     setModalIsShown(false);
   };
@@ -22,8 +25,8 @@ const ActivityItem = ({ id, name }) => {
     navigate("/", {
       state: {
         activityId: id,
-        activityName:name,
-      }
+        activityName: name,
+      },
     });
   };
 
@@ -37,7 +40,13 @@ const ActivityItem = ({ id, name }) => {
       <button className="activityBtn" onClick={showModalHandler}>
         <RiMore2Fill />
       </button>
-      {modalIsShown && <ActivityConfig id={id} onClose={hideModalHandler} />}
+      {modalIsShown && (
+        <ActivityConfig
+          id={id}
+          onClose={hideModalHandler}
+          deleteActivity={deleteActivity}
+        />
+      )}
     </div>
   );
 };

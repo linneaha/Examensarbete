@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 import ActivityItem from "../components/ActivityItem";
 import AddActivityForm from "../components/AddActivityForm";
 
 const Activities = () => {
   const [activities, setActivities] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  
+
   let toggleModal = () => {
     setOpenModal(!openModal);
+  };
+
+  const deleteActivity = (id) => {
+    axios
+      .delete(`http://localhost:3001/api/activities/${id}`, id, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        const filteredActivities = activities.filter(
+          (activity) => activity.id !== id
+        );
+        setActivities(filteredActivities);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -27,7 +42,7 @@ const Activities = () => {
           <ul className="activityList">
             {activities.map((activity) => (
               <li key={activity._id}>
-                <ActivityItem id={activity._id} name={activity.name} />
+                <ActivityItem id={activity._id} name={activity.name} deleteActivity={deleteActivity}/>
               </li>
             ))}
           </ul>

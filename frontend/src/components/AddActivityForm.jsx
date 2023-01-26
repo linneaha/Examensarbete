@@ -41,11 +41,3 @@ const AddActivityForm = ({ toggleModal }) => {
 };
 
 export default AddActivityForm;
-
-//   fetch("http://localhost:3001/api/activities", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(activity),
-//   }).
