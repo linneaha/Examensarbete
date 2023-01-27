@@ -33,7 +33,7 @@ const ActivityItem = ({ id, name, deleteActivity }) => {
   return (
     <div className="listItemDiv">
       <img src="https://via.placeholder.com/50" alt="icon" />
-      {capitalizeFirstLetter(name)}
+      <h3>{capitalizeFirstLetter(name)}</h3>
       <button className="activityBtn" onClick={handleStartButton}>
         <RiPlayCircleFill />
       </button>
