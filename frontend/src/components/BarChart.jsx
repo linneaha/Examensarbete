@@ -1,10 +1,9 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import Chart from "chart.js/auto";
 
 const BarChart = ({ averageStatsForActivity }) => {
   const convertToMinutes = (duration) => {
-    var minutes = Math.floor((duration / (1000 * 60)) % 60);
+    var minutes = Math.floor(duration / 1000 / 60);
     return minutes;
   };
 
@@ -19,11 +18,11 @@ const BarChart = ({ averageStatsForActivity }) => {
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
-        label: "Tidsåtgång innan första paus",
+        label: "Tid vid första paus",
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageTimeBeforeFirstBreak)
         ),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: "rgb(255, 199, 176, 0.5)",
       },
     ],
   };
@@ -63,7 +62,7 @@ const BarChart = ({ averageStatsForActivity }) => {
             y: {
               title: {
                 display: true,
-                text: "minutes",
+                text: "minuter",
               },
             },
           },
@@ -85,7 +84,7 @@ const BarChart = ({ averageStatsForActivity }) => {
             y: {
               title: {
                 display: true,
-                text: "minutes",
+                text: "minuter",
               },
             },
           },
@@ -107,7 +106,7 @@ const BarChart = ({ averageStatsForActivity }) => {
             y: {
               title: {
                 display: true,
-                text: "minutes",
+                text: "antal",
               },
             },
           },
