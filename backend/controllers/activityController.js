@@ -1,5 +1,4 @@
 const Activity = require("../models/activityModel");
-const  Stats  = require("../models/statsModel");
 
 const getActivities = async (req, res) => {
   const activity = await Activity.find().populate("stats");
@@ -35,5 +34,3 @@ module.exports = {
   updateActivity,
   deleteActivity,
 };
-
-// const activity = await Activity.findById(ID).populate("stats");

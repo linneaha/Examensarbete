@@ -4,7 +4,7 @@ import axios from "axios";
 
 const AddActivityForm = ({ toggleModal }) => {
   const [name, setName] = useState("");
-  const [img, setImg] = useState("");
+  // const [img, setImg] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,11 +41,3 @@ const AddActivityForm = ({ toggleModal }) => {
 };
 
 export default AddActivityForm;
-
-//   fetch("http://localhost:3001/api/activities", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(activity),
-//   }).

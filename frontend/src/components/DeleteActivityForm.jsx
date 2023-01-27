@@ -1,23 +1,14 @@
-import axios from "axios";
 import Modal from "./Modal";
 
-const DeleteActivityForm = ({ onClose, id }) => {
-  console.log(id);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios.delete(`http://localhost:3001/api/activities/${id}`, id, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-  };
-
+const DeleteActivityForm = ({ onClose, id, deleteActivity }) => {
   return (
     <Modal onClose={onClose}>
       <h1>Delete task?</h1>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={() => {
+          deleteActivity(id);
+        }}
+      >
         <p>Chart data will also be deleted if any data exists.</p>
         <button onClick={onClose}>Cancel</button>
         <button type="submit">Delete</button>

@@ -6,17 +6,17 @@
 
 /* Nav */
 
-nav {
+nav ul {
   background-color: lightgrey;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding: 20px;
 }
 
 nav li {
   list-style: none;
   display: inline;
-  margin-right: 50px;
 }
 
 .navIcon:hover {
@@ -55,13 +55,19 @@ nav li {
   margin: 0 auto;
   text-align: center;
   border-radius: 10%;
-  width: 100px;
+  padding: 10px;
 }
 
 /* Activities */
 
 .activityListWrapper {
   text-align: center;
+  padding: 20px 10px 10px 10px;
+}
+
+.activityListWrapper h1 {
+  text-align: left;
+  margin-left: 15px;
 }
 
 .activityList {
@@ -71,8 +77,11 @@ nav li {
 .activityList li {
   list-style: none;
 }
+
 .activityBtn {
   all: unset;
+  margin: 0px 5px 0px 5px;
+  font-size: 1.4em;
 }
 
 .addActivityBtn {
@@ -120,10 +129,27 @@ nav li {
 }
 
 .listItemDiv {
-  background-color: lightgrey;
+  padding: 15px;
+  background-color: white;
   margin: 15px;
   border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
+
+.listItemDiv > h3 {
+  font-size: 1.1em;
+  margin: 0px 10px 10px 15px;
+  text-align: left;
+  align-self: start;
+  flex-grow: 1;
+}
+
+.activityBtn:last-of-type{
+  margin: 0px 0px 25px 5px;
+}
+
 
 .addNewActivityModal h1 {
   margin-left: 15px;

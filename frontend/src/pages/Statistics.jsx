@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import BarChart from "../components/BarChart";
 
 const Statistics = () => {
   const [stats, setStats] = useState([]);
@@ -11,26 +12,16 @@ const Statistics = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const convertTime = (num) => {
-    var minutes = Math.floor(num / 60000);
-    var seconds = ((num % 60000) / 1000).toFixed(0);
-    var hours = minutes % 60;
-    return (
-      hours +
-      (hours < 10 ? "0" : "") +
-      ":" +
-      minutes +
-      (minutes < 10 ? "0" : "") +
-      ":" +
-      (seconds < 10 ? "0" : "") +
-      seconds
-    );
+  // const calculateAverageTime = (arr1, arr2) => {};
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const calculateAverageTime = (arr1, arr2) => {};
+  let filteredStats = stats.filter((stat) => stat.stats.length !== 0);
 
-  let averageStatsForActivity = stats.map((stat) => ({
-    name: stat.name,
+  let averageStatsForActivity = filteredStats.map((stat) => ({
+    name: capitalizeFirstLetter(stat.name),
     averageActiveTime:
       stat.stats
         .map((stat) => stat.totalActiveTime)
@@ -49,15 +40,12 @@ const Statistics = () => {
         .reduce((prev, curr) => prev + curr) / stat.stats.length,
   }));
 
+  // console.log(averageStatsForActivity);
+
   return (
     <div className="statsWrapper">
       <h1>Statistik</h1>
-      {averageStatsForActivity.map((stat, i) => (
-        <div key={i}>
-          <h3>{stat.name}</h3>
-          <p>Average active time: {convertTime(stat.averageActiveTime)}</p>
-        </div>
-      ))}
+      <BarChart averageStatsForActivity={averageStatsForActivity} />
     </div>
   );
 };
