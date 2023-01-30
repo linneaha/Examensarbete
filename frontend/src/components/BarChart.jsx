@@ -1,7 +1,10 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import { Chart, registerables} from 'chart.js';
 
 const BarChart = ({ averageStatsForActivity }) => {
+  Chart.register(...registerables);
+  
   const convertToMinutes = (duration) => {
     var minutes = Math.floor(duration / 1000 / 60);
     return minutes;
