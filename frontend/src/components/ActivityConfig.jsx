@@ -3,6 +3,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import EditActivityForm from "./EditActivityForm";
 import DeleteActivityForm from "./DeleteActivityForm";
+import { GrFormClose } from "react-icons/gr";
 
 const ActivityConfig = ({ id, onClose, deleteActivity }) => {
   const [showEditForm, setShowEditForm] = useState(false);
@@ -18,22 +19,19 @@ const ActivityConfig = ({ id, onClose, deleteActivity }) => {
 
   return (
     <Modal onClose={onClose}>
-      <div>
-        <div className="modalContent">
-          <div onClick={handleEditForm}>Edit</div>
-          {showEditForm && <EditActivityForm id={id} onClose={onClose} />}
+      <div className="activityConfigModalWrapper">
+      <GrFormClose onClick={onClose} className="exitBtn" />
+        <div onClick={handleEditForm}>Edit</div>
+        {showEditForm && <EditActivityForm id={id} onClose={onClose} />}
 
-          <div onClick={handleDeleteForm}>Delete</div>
-          {showDeleteForm && (
-            <DeleteActivityForm
-              id={id}
-              onClose={onClose}
-              deleteActivity={deleteActivity}
-            />
-          )}
-
-          <button onClick={onClose}>Cancel</button>
-        </div>
+        <div onClick={handleDeleteForm}>Delete</div>
+        {showDeleteForm && (
+          <DeleteActivityForm
+            id={id}
+            onClose={onClose}
+            deleteActivity={deleteActivity}
+          />
+        )}
       </div>
     </Modal>
   );

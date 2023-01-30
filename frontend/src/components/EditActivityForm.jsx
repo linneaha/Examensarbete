@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import Modal from "./Modal";
+import { GrFormClose } from "react-icons/gr";
 
 const EditActivityForm = ({ onClose, id }) => {
   console.log(id);
@@ -21,20 +22,22 @@ const EditActivityForm = ({ onClose, id }) => {
 
   return (
     <Modal onClose={onClose}>
-      <h1>Edit task</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="newName">Name</label>
-        <input
-          type="text"
-          id="newName"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
-        <div>
-          <button onClick={onClose}>Cancel</button>
-          <button type="submit">Save</button>
-        </div>
-      </form>
+      <div className="modalWrapper">
+        <GrFormClose onClick={onClose} className="exitBtn" />
+        <h1>Edit task</h1>
+        <form onSubmit={handleSubmit} className="editForm">
+          <label htmlFor="newName">Name</label>
+          <input
+            type="text"
+            id="newName"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+          <div>
+            <button type="submit">Save</button>
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 };

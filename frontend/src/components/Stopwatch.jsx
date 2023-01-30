@@ -4,9 +4,10 @@ import { useLocation } from "react-router";
 import { RxResume } from "react-icons/rx";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoPlay, IoStop } from "react-icons/io5";
-import { MdOutlineFreeBreakfast } from "react-icons/md";
+import { MdOutlineFreeBreakfast, MdSwapVerticalCircle } from "react-icons/md";
 import { GrPowerReset } from "react-icons/gr";
-
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -16,6 +17,10 @@ const Stopwatch = () => {
   const [timeBeforeFirstBreak, setTimeBeforeFirstBreak] = useState(0);
   const [amountOfBreaks, setAmountOfBreaks] = useState(0);
   const [click, setClick] = useState(0);
+  const [mode, setMode] = useState("work");
+
+  const orange = "#FFBB50";
+  const blue = "#5094FF";
 
   const location = useLocation();
 
@@ -61,6 +66,19 @@ const Stopwatch = () => {
     setTotalBreakTime(breakTime);
   };
 
+  const resetTimer = () => {
+    setTime(0);
+    setBreakTime(0);
+  };
+
+  const formatTime = (time) => {
+    let hours = ("0" + Math.floor(time / 3600000)).slice(-2),
+      minutes = ("0" + Math.floor((time / 60000) % 60)).slice(-2),
+      seconds = ("0" + Math.floor((time / 1000) % 60)).slice(-2);
+    let formattedString = `${hours}:${minutes}:${seconds}`;
+    return { hours, minutes, seconds, formattedString };
+  };
+
   useEffect(() => {
     let interval;
     if (isBreak) {
@@ -87,18 +105,22 @@ const Stopwatch = () => {
 
   return (
     <div className="stopwatch">
-      <h1>{!location.state ? null : location.state.activityName}</h1>
-      <div className="numbers">
-        <span>{("0" + Math.floor(time / 3600000)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+      <div>
+        <h1>{!location.state ? null : location.state.activityName}</h1>
       </div>
-      <div className="numbers">
-        <h3>Break</h3>
-        <span>{("0" + Math.floor(breakTime / 3600000)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((breakTime / 60000) % 60)).slice(-2)}:</span>
-        <span>{("0" + Math.floor((breakTime / 1000) % 60)).slice(-2)}</span>
-      </div>
+      <CircularProgressbar
+        value={isRunning ? time / 36000 : breakTime / 36000}
+        text={
+          isRunning
+            ? formatTime(time).formattedString
+            : formatTime(breakTime).formattedString
+        }
+        styles={buildStyles({
+          textColor: "#000",
+          pathColor: mode === "work" ? orange : blue,
+          tailColor: "rgba(255,255,255,.2)",
+        })}
+      />
       <div className="buttons">
         {!isRunning ? (
           <button className="controlButton" onClick={() => setIsRunning(true)}>
@@ -109,7 +131,7 @@ const Stopwatch = () => {
             <IoStop />
           </button>
         )}
-        <button className="controlButton" onClick={() => setTime(0)}>
+        <button className="controlButton" onClick={() => resetTimer()}>
           <GrPowerReset />
         </button>
         {!isBreak ? (
