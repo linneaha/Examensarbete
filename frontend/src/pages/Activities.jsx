@@ -36,23 +36,24 @@ const Activities = () => {
 
   return (
     <>
-      {!openModal ? (
-        <div className="activityListWrapper">
-          <h1>Activities</h1>
-          <ul className="activityList">
-            {activities.map((activity) => (
-              <li key={activity._id}>
-                <ActivityItem id={activity._id} name={activity.name} deleteActivity={deleteActivity}/>
-              </li>
-            ))}
-          </ul>
-          <button className="addActivityBtn" onClick={toggleModal}>
-            + Add new activity
-          </button>
-        </div>
-      ) : (
-        <AddActivityForm toggleModal={toggleModal} />
-      )}
+      <div className="activityListWrapper">
+        <h1>Activities</h1>
+        <ul className="activityList">
+          {activities.map((activity) => (
+            <li key={activity._id}>
+              <ActivityItem
+                id={activity._id}
+                name={activity.name}
+                deleteActivity={deleteActivity}
+              />
+            </li>
+          ))}
+        </ul>
+        <button className="addActivityBtn" onClick={toggleModal}>
+          + Add new activity
+        </button>
+      </div>
+      {openModal && <AddActivityForm toggleModal={toggleModal} />}
     </>
   );
 };

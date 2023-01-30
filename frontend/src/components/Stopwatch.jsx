@@ -66,6 +66,11 @@ const Stopwatch = () => {
     setTotalBreakTime(breakTime);
   };
 
+  const resetTimer = () => {
+    setTime(0);
+    setBreakTime(0);
+  };
+
   const formatTime = (time) => {
     let hours = ("0" + Math.floor(time / 3600000)).slice(-2),
       minutes = ("0" + Math.floor((time / 60000) % 60)).slice(-2),
@@ -126,7 +131,7 @@ const Stopwatch = () => {
             <IoStop />
           </button>
         )}
-        <button className="controlButton" onClick={() => setTime(0)}>
+        <button className="controlButton" onClick={() => resetTimer()}>
           <GrPowerReset />
         </button>
         {!isBreak ? (
