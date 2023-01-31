@@ -17,8 +17,8 @@ const EditActivityForm = ({ onClose, id }) => {
       headers: {
         "Content-Type": "application/json",
       },
-    });
-  };
+    }).then(onClose());
+  }
 
   const selectImg = (e) => {
     setSelected(!selected);

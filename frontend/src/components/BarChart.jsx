@@ -14,14 +14,14 @@ const BarChart = ({ averageStatsForActivity }) => {
     labels: averageStatsForActivity.map((activity) => activity.name),
     datasets: [
       {
-        label: "Aktiv tid",
+        label: "Active time",
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageActiveTime)
         ),
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
-        label: "Tid vid första paus",
+        label: "Time at first break",
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageTimeBeforeFirstBreak)
         ),
@@ -34,7 +34,7 @@ const BarChart = ({ averageStatsForActivity }) => {
     labels: averageStatsForActivity.map((activity) => activity.name),
     datasets: [
       {
-        label: "Paus (min)",
+        label: "Break (min)",
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageBreakTime)
         ),
@@ -47,7 +47,7 @@ const BarChart = ({ averageStatsForActivity }) => {
     labels: averageStatsForActivity.map((activity) => activity.name),
     datasets: [
       {
-        label: "Antal pauser",
+        label: "Amount of Breaks",
         data: averageStatsForActivity.map(
           (activity) => activity.averageAmountOfBreaks
         ),
@@ -65,14 +65,14 @@ const BarChart = ({ averageStatsForActivity }) => {
             y: {
               title: {
                 display: true,
-                text: "minuter",
+                text: "minutes",
               },
             },
           },
           plugins: {
             title: {
               display: true,
-              text: "Aktiv tid",
+              text: "Active time",
             },
             legend: {
               display: false,
@@ -87,14 +87,14 @@ const BarChart = ({ averageStatsForActivity }) => {
             y: {
               title: {
                 display: true,
-                text: "minuter",
+                text: "minutes",
               },
             },
           },
           plugins: {
             title: {
               display: true,
-              text: "Paus",
+              text: "Break",
             },
             legend: {
               display: false,
@@ -109,14 +109,14 @@ const BarChart = ({ averageStatsForActivity }) => {
             y: {
               title: {
                 display: true,
-                text: "antal",
+                text: "amount",
               },
             },
           },
           plugins: {
             title: {
               display: true,
-              text: "Antal pauser",
+              text: "Amount of breaks",
             },
             legend: {
               display: false,
