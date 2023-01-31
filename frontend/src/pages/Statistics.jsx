@@ -44,7 +44,7 @@ const Statistics = () => {
 
   return (
     <div className="statsWrapper">
-      <h1>Statistik</h1>
+      <h1>Statistics</h1>
       <BarChart averageStatsForActivity={averageStatsForActivity} />
     </div>
   );
