@@ -201,6 +201,7 @@ input {
 }
 
 .exitBtn {
+  font-size: 1.2em;
   align-self: end;
   margin-right: 5px;
 }
