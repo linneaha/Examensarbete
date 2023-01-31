@@ -23,12 +23,6 @@ const AddActivityForm = ({ toggleModal, iconList, onIconClick }) => {
       .then(toggleModal());
   };
 
-
-  const click = (e) => {
-   
-    console.log([e.target.id])
-  }
-  
   return (
     <Modal onClose={toggleModal}>
       <div className="modalWrapper">
@@ -49,7 +43,14 @@ const AddActivityForm = ({ toggleModal, iconList, onIconClick }) => {
             <label>Choose icon</label>
             <div className="iconGrid">
               {iconList.map((icon, i) => (
-                <img src={icon.image} alt={icon.title} className={icon.selected ? "withBorder" : "noBorder" } id={icon.title} onClick={(e) => onIconClick(e)} key={i}/>
+                <img
+                  src={icon.image}
+                  alt={icon.title}
+                  className={icon.selected ? "withBorder" : "noBorder"}
+                  id={icon.title}
+                  onClick={(e) => onIconClick(e)}
+                  key={i}
+                />
               ))}
             </div>
           </div>

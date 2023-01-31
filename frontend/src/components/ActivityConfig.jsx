@@ -8,8 +8,8 @@ import { GrFormClose } from "react-icons/gr";
 const ActivityConfig = ({ id, onClose, deleteActivity, iconList, onIconClick }) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
-
   const [showForm, setShowForm] = useState(true);
+
   const handleEditForm = () => {
     setShowEditForm(true);
   };
