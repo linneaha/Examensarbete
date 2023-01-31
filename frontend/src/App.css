@@ -251,13 +251,58 @@ input {
 }
 
 .modalWrapper {
-  height:50vh;
+  height: 50vh;
 }
-
-.editWrapper h1 {
-
+.activityConfigModalWrapper > button {
+  all: unset;
+  cursor: pointer;
 }
+.activityConfigModalWrapper > :nth-child(3) {
+  color: red;
+}
+.activityConfigModalWrapper > :nth-child(2) {
+  margin-bottom: 10px;
+}
+.deleteModalWrapper h1 {
+  margin-bottom: 10px;
+  padding: 12px 0 0 0;
+  font-size: 24px;
+}
+.deleteModalWrapper p {
+  margin-bottom: 15px;
+  padding: 12px;
+}
+.deleteModalWrapper > form {
+  text-align: right;
+  /* background-color: lightgrey; */
 
+  width: 100%;
+}
+.deleteModalWrapper > form button {
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+.deleteModalWrapper > form button:hover {
+  opacity: 1;
+}
+.deleteModalWrapper > form button:first-child {
+  border: none;
+  color: rgb(136, 136, 136);
+  background-color: none;
+  margin-right: 14px;
+
+  font-weight: bold;
+}
+.deleteModalWrapper > form button:nth-child(2) {
+  background-color: rgb(34, 34, 34);
+  border: 2px solid rgb(34, 34, 34);
+  color: white;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 2px;
+}
 .editForm {
   display: flex;
   flex-direction: column;

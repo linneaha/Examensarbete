@@ -9,6 +9,7 @@ const ActivityConfig = ({ id, onClose, deleteActivity }) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
 
+  const [showForm, setShowForm] = useState(true);
   const handleEditForm = () => {
     setShowEditForm(true);
   };
@@ -20,11 +21,15 @@ const ActivityConfig = ({ id, onClose, deleteActivity }) => {
   return (
     <Modal onClose={onClose}>
       <div className="activityConfigModalWrapper">
-      <GrFormClose onClick={onClose} className="exitBtn" />
-        <div onClick={handleEditForm}>Edit</div>
+        <GrFormClose onClick={onClose} className="exitBtn" />
+        <button className="editBtn" onClick={handleEditForm}>
+          Edit
+        </button>
         {showEditForm && <EditActivityForm id={id} onClose={onClose} />}
 
-        <div onClick={handleDeleteForm}>Delete</div>
+        <button className="editBtn" onClick={handleDeleteForm}>
+          Delete
+        </button>
         {showDeleteForm && (
           <DeleteActivityForm
             id={id}
