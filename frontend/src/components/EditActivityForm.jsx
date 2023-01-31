@@ -3,8 +3,9 @@ import axios from "axios";
 import { useState } from "react";
 import Modal from "./Modal";
 import { GrFormClose } from "react-icons/gr";
+import image from "../assets/grooming.png"
 
-const EditActivityForm = ({ onClose, id }) => {
+const EditActivityForm = ({ onClose, id, iconList }) => {
   const [name, setName] = useState("");
   const [selected, setSelected] = useState(false);
 
@@ -43,18 +44,9 @@ const EditActivityForm = ({ onClose, id }) => {
           <div>
             <label>Choose icon</label>
             <div className="iconGrid">
-              <img
-                src="https://via.placeholder.com/50"
-                alt="icon"
-                onClick={() => selectImg()}
-                className={!selected ? "none" : "border"}
-              />
-              
-              <img src="https://www.flaticon.com/free-icons/coffee-break" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
+            {iconList.map((icon) => (
+                <img src={icon.image} alt={icon.title} />
+              ))}
             </div>
           </div>
           <div>

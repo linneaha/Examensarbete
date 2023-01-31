@@ -3,7 +3,7 @@ import { GrFormClose } from "react-icons/gr";
 import axios from "axios";
 import Modal from "./Modal";
 
-const AddActivityForm = ({ toggleModal }) => {
+const AddActivityForm = ({ toggleModal, iconList, onIconClick }) => {
   const [name, setName] = useState("");
   // const [img, setImg] = useState("");
 
@@ -23,11 +23,17 @@ const AddActivityForm = ({ toggleModal }) => {
       .then(toggleModal());
   };
 
+
+  const click = (e) => {
+   
+    console.log([e.target.id])
+  }
+  
   return (
     <Modal onClose={toggleModal}>
       <div className="modalWrapper">
         <GrFormClose onClick={toggleModal} className="exitBtn" />
-        <h1>Add new activity</h1>
+        <h1>Add activity</h1>
         <form className="activityForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name</label>
@@ -42,15 +48,14 @@ const AddActivityForm = ({ toggleModal }) => {
           <div>
             <label>Choose icon</label>
             <div className="iconGrid">
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
-              <img src="https://via.placeholder.com/50" alt="icon" />
+              {iconList.map((icon) => (
+                <img src={icon.image} alt={icon.title} className={icon.selected ? "withBorder" : "noBorder" } id={icon.title} onClick={(e) => onIconClick(e)}/>
+              ))}
             </div>
           </div>
-          <button type="submit" className="addBtn">+</button>
+          <button type="submit" className="addBtn">
+            +
+          </button>
         </form>
       </div>
     </Modal>

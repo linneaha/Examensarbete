@@ -5,7 +5,7 @@ import EditActivityForm from "./EditActivityForm";
 import DeleteActivityForm from "./DeleteActivityForm";
 import { GrFormClose } from "react-icons/gr";
 
-const ActivityConfig = ({ id, onClose, deleteActivity }) => {
+const ActivityConfig = ({ id, onClose, deleteActivity, iconList }) => {
   const [showEditForm, setShowEditForm] = useState(false);
   const [showDeleteForm, setShowDeleteForm] = useState(false);
 
@@ -25,7 +25,7 @@ const ActivityConfig = ({ id, onClose, deleteActivity }) => {
         <button className="editBtn" onClick={handleEditForm}>
           Edit
         </button>
-        {showEditForm && <EditActivityForm id={id} onClose={onClose} />}
+        {showEditForm && <EditActivityForm id={id} onClose={onClose} iconList={iconList}/>}
 
         <button className="editBtn" onClick={handleDeleteForm}>
           Delete
