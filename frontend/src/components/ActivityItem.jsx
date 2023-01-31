@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityConfig from "./ActivityConfig";
 
-const ActivityItem = ({ id, name, deleteActivity, iconList }) => {
+const ActivityItem = ({ id, name, deleteActivity, iconList, onIconClick }) => {
   const [modalIsShown, setModalIsShown] = useState(false);
 
   const navigate = useNavigate();
@@ -46,6 +46,7 @@ const ActivityItem = ({ id, name, deleteActivity, iconList }) => {
           onClose={hideModalHandler}
           deleteActivity={deleteActivity}
           iconList={iconList}
+          onIconClick={onIconClick}
         />
       )}
     </div>

@@ -136,7 +136,7 @@ nav li {
 .modalWrapper {
   display: flex;
   flex-direction: column;
-  height: 65vh;
+  height: 70vh;
 }
 
 .activityForm {
@@ -172,7 +172,7 @@ label {
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, auto);
   grid-gap: 20px;
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .iconGrid img {
@@ -224,8 +224,8 @@ label {
 }
 
 .exitBtn {
+  font-size: 1.4em;
   color: black;
-  font-size: 1.2em;
   align-self: end;
   margin-right: 5px;
 }

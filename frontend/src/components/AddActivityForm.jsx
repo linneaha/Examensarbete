@@ -48,8 +48,8 @@ const AddActivityForm = ({ toggleModal, iconList, onIconClick }) => {
           <div>
             <label>Choose icon</label>
             <div className="iconGrid">
-              {iconList.map((icon) => (
-                <img src={icon.image} alt={icon.title} className={icon.selected ? "withBorder" : "noBorder" } id={icon.title} onClick={(e) => onIconClick(e)}/>
+              {iconList.map((icon, i) => (
+                <img src={icon.image} alt={icon.title} className={icon.selected ? "withBorder" : "noBorder" } id={icon.title} onClick={(e) => onIconClick(e)} key={i}/>
               ))}
             </div>
           </div>

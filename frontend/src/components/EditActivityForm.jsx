@@ -3,26 +3,22 @@ import axios from "axios";
 import { useState } from "react";
 import Modal from "./Modal";
 import { GrFormClose } from "react-icons/gr";
-import image from "../assets/grooming.png"
 
-const EditActivityForm = ({ onClose, id, iconList }) => {
+const EditActivityForm = ({ onClose, id, iconList, onIconClick }) => {
   const [name, setName] = useState("");
-  const [selected, setSelected] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newName = {
       name,
     };
-    axios.put(`http://localhost:3001/api/activities/${id}`, newName, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(onClose());
-  }
-
-  const selectImg = (e) => {
-    setSelected(!selected);
+    axios
+      .put(`http://localhost:3001/api/activities/${id}`, newName, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(onClose());
   };
 
   return (
@@ -44,8 +40,8 @@ const EditActivityForm = ({ onClose, id, iconList }) => {
           <div>
             <label>Choose icon</label>
             <div className="iconGrid">
-            {iconList.map((icon) => (
-                <img src={icon.image} alt={icon.title} />
+              {iconList.map((icon, i) => (
+                <img src={icon.image} alt={icon.title} className={icon.selected ? "withBorder" : "noBorder" } id={icon.title} onClick={(e) => onIconClick(e)} key={i}/>
               ))}
             </div>
           </div>

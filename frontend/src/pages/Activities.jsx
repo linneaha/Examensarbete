@@ -101,8 +101,8 @@ const Activities = () => {
                 id={activity._id}
                 name={activity.name}
                 deleteActivity={deleteActivity}
-                toggleModal={toggleModal}
                 iconList={iconList}
+                onIconClick={onIconClick}
               />
             </li>
           ))}
