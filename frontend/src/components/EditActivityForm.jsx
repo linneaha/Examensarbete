@@ -49,7 +49,8 @@ const EditActivityForm = ({ onClose, id }) => {
                 onClick={() => selectImg()}
                 className={!selected ? "none" : "border"}
               />
-              <img src="https://via.placeholder.com/50" alt="icon" />
+              
+              <img src="https://www.flaticon.com/free-icons/coffee-break" alt="icon" />
               <img src="https://via.placeholder.com/50" alt="icon" />
               <img src="https://via.placeholder.com/50" alt="icon" />
               <img src="https://via.placeholder.com/50" alt="icon" />
