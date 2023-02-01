@@ -384,7 +384,7 @@ label {
   align-items: center;
   text-align: center;
   position: fixed;
-  bottom: 20vh;
+  bottom: 14vh;
   left: 2.5%;
   width: 95%;
   background-color: white;
@@ -395,13 +395,53 @@ label {
   animation: slide-down 300ms ease-out forwards;
 }
 
-.completeText{
- display:flex;
+.completeText {
+  display: flex;
   flex-direction: row;
+  padding-bottom: 15px;
 }
 
-.completeText :nth-child(2){
- color:rgba(26, 156, 34);
+.completeText :nth-child(2) {
+  color: rgba(26, 156, 34);
+  font-size: 2rem;
+}
+
+.saveData {
+  margin: 25px 20px;
+}
+
+.activeTime :last-child {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.activeTime :first-child {
+  color: rgb(90, 89, 89);
+}
+
+.number {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 0.9em;
+  color: rgb(90, 89, 89);
+}
+
+.saveData > :nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.dataFlexBox > div {
+  margin: 20px;
+}
+
+.progressBar {
+  width: 70%;
+  margin: 20px;
 }
 
 @media (min-width: 768px) {

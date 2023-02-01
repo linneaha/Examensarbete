@@ -30,6 +30,10 @@ const Statistics = () => {
       stat.stats
         .map((stat) => stat.totalBreakTime)
         .reduce((prev, curr) => prev + curr) / stat.stats.length,
+    averageTotalTime:
+      stat.stats
+        .map((stat) => stat.totalTime)
+        .reduce((prev, curr) => prev + curr) / stat.stats.length,
     averageTimeBeforeFirstBreak:
       stat.stats
         .map((stat) => stat.timeBeforeFirstBreak)
@@ -40,7 +44,7 @@ const Statistics = () => {
         .reduce((prev, curr) => prev + curr) / stat.stats.length,
   }));
 
-  // console.log(averageStatsForActivity);
+  console.log(averageStatsForActivity);
 
   return (
     <div className="statsWrapper">

@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { RxResume } from "react-icons/rx";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoPlay, IoStop } from "react-icons/io5";
-import { MdOutlineFreeBreakfast, MdSwapVerticalCircle } from "react-icons/md";
+import { MdOutlineFreeBreakfast } from "react-icons/md";
 import { GrPowerReset } from "react-icons/gr";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -32,6 +32,7 @@ const Stopwatch = () => {
   const newStats = {
     totalActiveTime: time,
     totalBreakTime,
+    totalTime: time + totalBreakTime,
     timeBeforeFirstBreak,
     amountOfBreaks,
     activityId: !location.state ? null : location.state.activityId,
@@ -159,7 +160,13 @@ const Stopwatch = () => {
         </button>
         <div style={{ width: 150, marginLeft: 550 }}></div>
       </div>
-      {toggleModal && <CompleteActivity toggleCompleteModal={toggleCompleteModal} newStats={newStats} activityName={activityName}/>}
+      {toggleModal && (
+        <CompleteActivity
+          toggleCompleteModal={toggleCompleteModal}
+          newStats={newStats}
+          activityName={activityName}
+        />
+      )}
     </div>
   );
 };

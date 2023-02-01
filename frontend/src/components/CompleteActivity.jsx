@@ -22,21 +22,40 @@ const CompleteActivity = ({ toggleCompleteModal, newStats, activityName }) => {
           <h1>{activityName}</h1>
           <IoMdCheckmark />
         </div>
-        <CircularProgressbar
-          text="Well done!"
-          styles={buildStyles({
-            textColor: "#000",
-            textSize: "12px",
-            pathColor: "rgba(26, 156, 34)",
-          })}
-        />
-        <p>Total active time: {convertToMinutes(newStats.totalActiveTime)}</p>
-        <p>Amount of breaks: {convertToMinutes(newStats.amountOfBreaks)}</p>
-        <p>
-          Time before first break:{" "}
-          {convertToMinutes(newStats.timeBeforeFirstBreak)}
-        </p>
-        <p>Total break time: {convertToMinutes(newStats.totalBreakTime)}</p>
+        <div className="progressBar">
+          <CircularProgressbar
+            text="Well done!"
+            styles={buildStyles({
+              textColor: "#000",
+              textSize: "12px",
+              pathColor: "rgba(26, 156, 34)",
+            })}
+          />
+        </div>
+        <section className="saveData">
+          <div className="activeTime">
+            <p>Total active time</p>
+            <p>{convertToMinutes(newStats.totalActiveTime)}m</p>
+          </div>
+          <div className="dataFlexBox">
+            <div>
+              <p className="number">
+                {convertToMinutes(newStats.amountOfBreaks)}
+              </p>
+              <p className="label">Breaks</p>
+            </div>
+            <div>
+              <p className="number">{convertToMinutes(newStats.totalTime)}m</p>
+              <p className="label">Total</p>
+            </div>
+            <div>
+              <p className="number">
+                {convertToMinutes(newStats.totalBreakTime)}m
+              </p>
+              <p className="label">Break time</p>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
