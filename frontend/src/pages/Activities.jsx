@@ -6,56 +6,56 @@ import AddActivityForm from "../components/AddActivityForm";
 const Activities = () => {
   const [activities, setActivities] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [icon, setIcon] = useState("");
   const [iconList, setIconList] = useState([
     {
       title: "book",
-      image: require("../assets/book.png"),
+      image: "icons/book.png",
       selected: false,
     },
     {
       title: "checklist",
-      image: require("../assets/checklist.png"),
+      image: "icons/checklist.png",
       selected: false,
     },
-
     {
       title: "cleaning",
-      image: require("../assets/cleaning.png"),
+      image: "icons/cleaning.png",
       selected: false,
     },
-
     {
       title: "cooking",
-      image: require("../assets/cooking.png"),
+      image: "icons/cooking.png",
       selected: false,
     },
-
     {
       title: "grocery",
-      image: require("../assets/grocery.png"),
+      image: "icons/grocery.png",
       selected: false,
     },
-
     {
       title: "shower",
-      image: require("../assets/grooming.png"),
+      image: "icons/grooming.png",
       selected: false,
     },
-
     {
       title: "washing dishes",
-      image: require("../assets/wash.png"),
+      image: "icons/wash.png",
       selected: false,
     },
-
     {
       title: "washing machine",
-      image: require("../assets/washing-machine.png"),
+      image: "icons/washing-machine.png",
       selected: false,
     },
   ]);
 
   const onIconClick = (e) => {
+    const word = "icons";
+
+    const iconPath = e.target.src.slice(e.target.src.indexOf(word));
+    setIcon(iconPath);
+
     const selected = iconList.map((icon) => ({
       ...icon,
       selected: e.target.id !== icon.title ? false : true,
@@ -98,6 +98,8 @@ const Activities = () => {
           {activities.map((activity) => (
             <li key={activity._id}>
               <ActivityItem
+                activityIcon={activity.icon}
+                icon={icon}
                 id={activity._id}
                 name={activity.name}
                 deleteActivity={deleteActivity}
@@ -108,13 +110,14 @@ const Activities = () => {
           ))}
         </ul>
         <button className="addActivityBtn" onClick={toggleModal}>
-          + Add new activity
+          + Add activity
         </button>
       </div>
       {openModal && (
         <AddActivityForm
           toggleModal={toggleModal}
           iconList={iconList}
+          icon={icon}
           onIconClick={onIconClick}
         />
       )}

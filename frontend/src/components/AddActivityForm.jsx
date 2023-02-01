@@ -3,15 +3,15 @@ import { GrFormClose } from "react-icons/gr";
 import axios from "axios";
 import Modal from "./Modal";
 
-const AddActivityForm = ({ toggleModal, iconList, onIconClick }) => {
+const AddActivityForm = ({ toggleModal, iconList, onIconClick, icon }) => {
   const [name, setName] = useState("");
-  // const [img, setImg] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const activity = {
       name,
+      icon
     };
 
     axios
@@ -43,14 +43,17 @@ const AddActivityForm = ({ toggleModal, iconList, onIconClick }) => {
             <label>Choose icon</label>
             <div className="iconGrid">
               {iconList.map((icon, i) => (
-                <img
-                  src={icon.image}
-                  alt={icon.title}
-                  className={icon.selected ? "withBorder" : "noBorder"}
-                  id={icon.title}
-                  onClick={(e) => onIconClick(e)}
+                <div
                   key={i}
-                />
+                  className={icon.selected ? "withBorder" : "noBorder"}
+                >
+                  <img
+                    src={icon.image}
+                    alt={icon.title}
+                    id={icon.title}
+                    onClick={(e) => onIconClick(e)}
+                  />
+                </div>
               ))}
             </div>
           </div>

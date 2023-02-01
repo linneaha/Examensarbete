@@ -4,7 +4,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityConfig from "./ActivityConfig";
 
-const ActivityItem = ({ id, name, deleteActivity, iconList, onIconClick }) => {
+const ActivityItem = ({
+  id,
+  name,
+  deleteActivity,
+  iconList,
+  onIconClick,
+  icon,
+  activityIcon,
+}) => {
   const [modalIsShown, setModalIsShown] = useState(false);
 
   const navigate = useNavigate();
@@ -32,7 +40,7 @@ const ActivityItem = ({ id, name, deleteActivity, iconList, onIconClick }) => {
 
   return (
     <div className="listItemDiv">
-      <img src="https://via.placeholder.com/50" alt="icon" />
+      <img src={activityIcon} alt="icon" className="icon" />
       <h3>{capitalizeFirstLetter(name)}</h3>
       <button className="activityBtn" onClick={handleStartButton}>
         <RiPlayCircleFill />
@@ -46,6 +54,7 @@ const ActivityItem = ({ id, name, deleteActivity, iconList, onIconClick }) => {
           onClose={hideModalHandler}
           deleteActivity={deleteActivity}
           iconList={iconList}
+          icon={icon}
           onIconClick={onIconClick}
         />
       )}

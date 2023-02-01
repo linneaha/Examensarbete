@@ -18,14 +18,14 @@ const BarChart = ({ averageStatsForActivity }) => {
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageActiveTime)
         ),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: "rgba(67,152,209,255)",
       },
       {
         label: "Time at first break",
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageTimeBeforeFirstBreak)
         ),
-        backgroundColor: "rgb(255, 199, 176, 0.5)",
+        backgroundColor: "rgba(151,211,230,255)",
       },
     ],
   };
@@ -38,7 +38,7 @@ const BarChart = ({ averageStatsForActivity }) => {
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageBreakTime)
         ),
-        backgroundColor: "rgb(255, 99, 71)",
+        backgroundColor: "rgba(247,114,25,255)",
       },
     ],
   };
@@ -51,7 +51,8 @@ const BarChart = ({ averageStatsForActivity }) => {
         data: averageStatsForActivity.map(
           (activity) => activity.averageAmountOfBreaks
         ),
-        backgroundColor: "rgb(73, 152, 45)",
+        backgroundColor: "rgba(26, 156, 34)",
+        
       },
     ],
   };

@@ -8,6 +8,7 @@ const getActivities = async (req, res) => {
 const createActivity = async (req, res) => {
   const activity = await Activity.create({
     name: req.body.name,
+    icon: req.body.icon
   });
 
   res.status(200).json(activity);

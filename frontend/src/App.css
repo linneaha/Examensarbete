@@ -10,13 +10,17 @@ nav ul {
   background-color: lightgrey;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding: 20px;
 }
 
 nav li {
   list-style: none;
   display: inline;
+}
+
+.navIcon {
+  font-size: 1.5em;
 }
 
 .navIcon:hover {
@@ -58,6 +62,11 @@ nav li {
   padding: 10px;
 }
 
+.statsWrapper h1 {
+  text-align: left;
+  margin: 15px 0 15px 15px;
+}
+
 /* Activities */
 
 .activityListWrapper {
@@ -67,11 +76,14 @@ nav li {
 
 .activityListWrapper h1 {
   text-align: left;
-  margin-left: 15px;
+  margin: 5px 0 15px 15px;
+  color: rgb(146, 146, 146);
+  font-size: 25px;
 }
 
 .activityList {
   padding: 0;
+  overflow: hidden;
 }
 
 .activityList li {
@@ -94,9 +106,10 @@ nav li {
   cursor: pointer;
   box-shadow: rgb(0 0 0 / 20%) 0px 2px 2px;
   color: white;
-  opacity: 0.9;
+  opacity: 0.95;
   font-size: 18px;
-  padding: 8px 12px;
+  padding: 10px 14px;
+  margin: 15px 15px;
   min-width: 70px;
   background-color: rgb(24, 22, 22);
   border: 2px solid rgb(34, 34, 34);
@@ -115,6 +128,7 @@ nav li {
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
@@ -123,12 +137,20 @@ nav li {
   font-size: 1.1em;
   margin: 0px 10px 10px 15px;
   text-align: left;
-  align-self: start;
   flex-grow: 1;
+}
+
+.activityBtn:first-of-type {
+  font-size: 1.8em;
 }
 
 .activityBtn:last-of-type {
   margin: 0px 0px 25px 5px;
+  color: rgb(128, 128, 128);
+}
+
+.icon {
+  width: 55px;
 }
 
 /* Activity add and edit form */
@@ -150,7 +172,7 @@ nav li {
 }
 
 .activityForm > div {
-  width: 80%;
+  width: 90%;
 }
 
 input {
@@ -171,20 +193,23 @@ label {
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, auto);
-  grid-gap: 20px;
+  grid-gap: 10px;
   margin-top: 20px;
 }
 
 .iconGrid img {
-  width: 50px;
+  width: 45px;
 }
 
 .noBorder {
   border: 2px solid transparent;
+  padding: 8px;
 }
 
 .withBorder {
-  border: 2px solid black;
+  border: 2px solid rgb(123, 123, 123);
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .addBtn {
@@ -249,9 +274,6 @@ label {
   align-items: center;
   text-align: center;
   position: fixed;
-  /* top: 20vh;
-  left: 5%;
-  width: 90%; */
   bottom: 1vh;
   left: 2.5%;
   width: 95%;
@@ -280,9 +302,11 @@ label {
   all: unset;
   cursor: pointer;
 }
+
 .activityConfigModalWrapper > :nth-child(3) {
   color: red;
 }
+
 .activityConfigModalWrapper > :nth-child(2) {
   margin-bottom: 10px;
 }
@@ -300,7 +324,6 @@ label {
 
 .deleteModalWrapper > form {
   text-align: right;
-  /* background-color: lightgrey; */
   width: 100%;
 }
 
@@ -322,7 +345,6 @@ label {
   color: rgb(136, 136, 136);
   background-color: none;
   margin-right: 14px;
-
   font-weight: bold;
 }
 
@@ -336,6 +358,50 @@ label {
 .editForm {
   display: flex;
   flex-direction: column;
+}
+
+/* Stopwatch */
+
+.stopwatch {
+  padding: 10px;
+  min-height: 90vh;
+}
+
+.completeModalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.completeModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  bottom: 20vh;
+  left: 2.5%;
+  width: 95%;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+.completeText{
+ display:flex;
+  flex-direction: row;
+}
+
+.completeText :nth-child(2){
+ color:rgba(26, 156, 34);
 }
 
 @media (min-width: 768px) {

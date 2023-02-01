@@ -4,13 +4,14 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { GrFormClose } from "react-icons/gr";
 
-const EditActivityForm = ({ onClose, id, iconList, onIconClick }) => {
+const EditActivityForm = ({ onClose, id, iconList, onIconClick, icon }) => {
   const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newName = {
       name,
+      icon
     };
     axios
       .put(`http://localhost:3001/api/activities/${id}`, newName, {
@@ -41,14 +42,17 @@ const EditActivityForm = ({ onClose, id, iconList, onIconClick }) => {
             <label>Choose icon</label>
             <div className="iconGrid">
               {iconList.map((icon, i) => (
-                <img
-                  src={icon.image}
-                  alt={icon.title}
-                  className={icon.selected ? "withBorder" : "noBorder"}
-                  id={icon.title}
-                  onClick={(e) => onIconClick(e)}
+                <div
                   key={i}
-                />
+                  className={icon.selected ? "withBorder" : "noBorder"}
+                >
+                  <img
+                    src={icon.image}
+                    alt={icon.title}
+                    id={icon.title}
+                    onClick={(e) => onIconClick(e)}
+                  />
+                </div>
               ))}
             </div>
           </div>

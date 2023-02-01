@@ -8,6 +8,8 @@ import { MdOutlineFreeBreakfast, MdSwapVerticalCircle } from "react-icons/md";
 import { GrPowerReset } from "react-icons/gr";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import CompleteActivity from "./CompleteActivity";
+
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -18,20 +20,29 @@ const Stopwatch = () => {
   const [amountOfBreaks, setAmountOfBreaks] = useState(0);
   const [click, setClick] = useState(0);
   const [mode, setMode] = useState("work");
+  const [toggleModal, setToggleModal] = useState(false);
 
-  const orange = "#FFBB50";
-  const blue = "#5094FF";
+  const orange = "rgba(247,114,25,255)";
+  const blue = "rgba(67,152,209,255)";
 
   const location = useLocation();
 
+  const activityName = !location.state ? "null" : location.state.activityName;
+
+  const newStats = {
+    totalActiveTime: time,
+    totalBreakTime,
+    timeBeforeFirstBreak,
+    amountOfBreaks,
+    activityId: !location.state ? null : location.state.activityId,
+  };
+
+  const toggleCompleteModal = () => {
+    setToggleModal(!toggleModal);
+  };
+
   const saveDataForActivity = () => {
-    const newStats = {
-      totalActiveTime: time,
-      totalBreakTime,
-      timeBeforeFirstBreak,
-      amountOfBreaks,
-      activityId: location.state.activityId,
-    };
+    toggleCompleteModal();
 
     axios.post("http://localhost:3001/api/stats", newStats, {
       headers: {
@@ -148,6 +159,7 @@ const Stopwatch = () => {
         </button>
         <div style={{ width: 150, marginLeft: 550 }}></div>
       </div>
+      {toggleModal && <CompleteActivity toggleCompleteModal={toggleCompleteModal} newStats={newStats} activityName={activityName}/>}
     </div>
   );
 };
