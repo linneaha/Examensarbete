@@ -348,31 +348,36 @@ label {
 /* Stopwatch */
 
 .stopwatchWrapper {
-  padding: 10px;
-  min-height: 90vh;
+  padding: 40px 10px 0px 10px;
 }
 
-.stopwatchWrapper > h1:first-of-type {
+.headerWrapper {
   text-align: center;
+  margin: 35px 0px 0px 0px;
+  min-height: 32px;
+}
+
+.headerWrapper h1 {
   font-size: 1.7em;
-  margin: 35px 35px;
 }
 
 .progressBarWrapper {
   width: 85%;
-  margin: 0 auto;
+  margin-top: 30px;
+  margin-left: 45px;
+  display: flex;
 }
 
 .buttonWrapper {
-  margin-top: 20px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .controlButton {
   color: rgb(66, 65, 65);
   font-size: 1.6em;
   background-color: white;
-  border: 1px solid lightgrey;
+  border: 1px solid rgb(177, 176, 176);
   border-radius: 50%;
   height: 55px;
   width: 55px;
@@ -392,6 +397,32 @@ label {
 .time {
   font-size: 25px;
   font-family: Roboto;
+}
+
+.modeButtonWrapper {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.modeButton {
+  color: rgb(66, 65, 65);
+  font-size: 1.1em;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  display: block;
+}
+
+.modeButton.workMode{
+  border: 1px solid rgba(247,114,25,255);
+}
+
+.modeButton.breakMode{
+  border: 1px solid rgba(67,152,209,255);
 }
 
 /* Complete Modal */
