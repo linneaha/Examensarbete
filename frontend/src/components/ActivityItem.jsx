@@ -34,6 +34,7 @@ const ActivityItem = ({
       state: {
         activityId: id,
         activityName: name,
+        activityIcon: activityIcon
       },
     });
   };

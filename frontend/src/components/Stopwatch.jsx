@@ -6,21 +6,25 @@ import { IoMdCheckmark } from "react-icons/io";
 import { IoPlay, IoStop } from "react-icons/io5";
 import { MdOutlineFreeBreakfast } from "react-icons/md";
 import { GrPowerReset } from "react-icons/gr";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import CompleteActivity from "./CompleteActivity";
 
 const Stopwatch = () => {
-  const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isBreak, setIsBreak] = useState(false);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [mode, setMode] = useState("work");
+
+  const [time, setTime] = useState(0);
   const [breakTime, setBreakTime] = useState(0);
   const [totalBreakTime, setTotalBreakTime] = useState(0);
   const [timeBeforeFirstBreak, setTimeBeforeFirstBreak] = useState(0);
   const [amountOfBreaks, setAmountOfBreaks] = useState(0);
   const [click, setClick] = useState(0);
-  const [mode, setMode] = useState("work");
-  const [toggleModal, setToggleModal] = useState(false);
 
   const orange = "rgba(247,114,25,255)";
   const blue = "rgba(67,152,209,255)";
@@ -28,6 +32,7 @@ const Stopwatch = () => {
   const location = useLocation();
 
   const activityName = !location.state ? "null" : location.state.activityName;
+  const activityIcon = !location.state ? "null" : location.state.activityIcon;
 
   const newStats = {
     totalActiveTime: time,
@@ -52,6 +57,12 @@ const Stopwatch = () => {
     });
   };
 
+  const startRunning = () => {
+    setIsRunning(true);
+    setMode("work");
+    saveBreakTime();
+  };
+
   const saveAmountOfBreaks = () => {
     setAmountOfBreaks(amountOfBreaks + 1);
   };
@@ -71,6 +82,8 @@ const Stopwatch = () => {
   const startBreak = () => {
     saveAmountOfBreaks();
     setIsBreak(true);
+    setMode("break");
+    setIsRunning(false);
   };
 
   const saveBreakTime = () => {
@@ -116,45 +129,44 @@ const Stopwatch = () => {
   }, [isRunning]);
 
   return (
-    <div className="stopwatch">
-      <div>
-        <h1>{!location.state ? null : location.state.activityName}</h1>
+    <div className="stopwatchWrapper">
+      <h1>{activityName}</h1>
+      <div className="progressBarWrapper">
+        <CircularProgressbarWithChildren
+          value={isRunning ? time / 36000 : breakTime / 36000}
+          styles={buildStyles({
+            pathColor: mode === "work" ? orange : blue,
+            tailColor: "rgba(255,255,255,.2)",
+          })}
+        >
+          {!isBreak ? (
+            <img src={activityIcon} className="stopwatchIcons" />
+          ) : (
+            <img src="icons/coffee-cup.png" className="stopwatchIcons" />
+          )}
+          <div className="time">
+            {isRunning
+              ? formatTime(time).formattedString
+              : formatTime(breakTime).formattedString}
+          </div>
+        </CircularProgressbarWithChildren>
       </div>
-      <CircularProgressbar
-        value={isRunning ? time / 36000 : breakTime / 36000}
-        text={
-          isRunning
-            ? formatTime(time).formattedString
-            : formatTime(breakTime).formattedString
-        }
-        styles={buildStyles({
-          textColor: "#000",
-          pathColor: mode === "work" ? orange : blue,
-          tailColor: "rgba(255,255,255,.2)",
-        })}
-      />
-      <div className="buttons">
+      <div className="buttonWrapper">
         {!isRunning ? (
-          <button className="controlButton" onClick={() => setIsRunning(true)}>
+          <button className="controlButton" onClick={() => startRunning()}>
             <IoPlay />
           </button>
         ) : (
-          <button className="controlButton" onClick={() => saveTime()}>
-            <IoStop />
-          </button>
-        )}
-        <button className="controlButton" onClick={() => resetTimer()}>
-          <GrPowerReset />
-        </button>
-        {!isBreak ? (
           <button className="controlButton" onClick={() => startBreak()}>
             <MdOutlineFreeBreakfast />
           </button>
-        ) : (
-          <button className="controlButton" onClick={() => saveBreakTime()}>
-            <RxResume />
-          </button>
         )}
+        {/* <button className="controlButton" onClick={() => resetTimer()}>
+          <GrPowerReset />
+        </button> */}
+        <button className="controlButton" onClick={() => saveTime()}>
+          <IoStop />
+        </button>
         <button className="controlButton" onClick={() => saveDataForActivity()}>
           <IoMdCheckmark />
         </button>

@@ -1,11 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+body {
+  margin-bottom: 80px;
+}
+
 /* Nav */
 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 nav ul {
   background-color: lightgrey;
   display: flex;
@@ -25,32 +36,6 @@ nav li {
 
 .navIcon:hover {
   color: grey;
-}
-
-/* Timer */
-
-.timerButtonFlex {
-  display: flex;
-  flex-direction: row;
-}
-
-.controlButton {
-  background-color: white;
-  text-align: center;
-  border: 1px solid grey;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  margin: 20px;
-}
-
-.buttons {
-  text-align: center;
-}
-
-.numbers {
-  margin: 20px;
-  text-align: center;
 }
 
 /* Stats */
@@ -362,10 +347,54 @@ label {
 
 /* Stopwatch */
 
-.stopwatch {
+.stopwatchWrapper {
   padding: 10px;
   min-height: 90vh;
 }
+
+.stopwatchWrapper > h1:first-of-type {
+  text-align: center;
+  font-size: 1.7em;
+  margin: 35px 35px;
+}
+
+.progressBarWrapper {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.buttonWrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.controlButton {
+  color: rgb(66, 65, 65);
+  font-size: 1.6em;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  margin: 20px;
+  padding-top: 5px;
+}
+
+.controlButton > * {
+  margin: 0 auto;
+}
+
+.stopwatchIcons {
+  width: 75px;
+  margin-bottom: 15px;
+}
+
+.time {
+  font-size: 25px;
+  font-family: Roboto;
+}
+
+/* Complete Modal */
 
 .completeModalBackdrop {
   position: fixed;
