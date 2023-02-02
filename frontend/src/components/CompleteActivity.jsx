@@ -1,5 +1,12 @@
 import React from "react";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { useState } from "react";
+import { useEffect } from "react";
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import "react-circular-progressbar/dist/styles.css";
 import { GrFormClose } from "react-icons/gr";
 import { IoMdCheckmark } from "react-icons/io";
@@ -9,6 +16,16 @@ const CompleteActivity = ({ toggleCompleteModal, newStats, activityName }) => {
     var minutes = Math.floor(duration / 1000 / 60);
     return minutes;
   };
+
+  const [percentage, setPercentage] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (percentage < 100) {
+        setPercentage(percentage + 1);
+      }
+    }, 3);
+  }, [percentage]);
 
   return (
     <>
@@ -23,14 +40,27 @@ const CompleteActivity = ({ toggleCompleteModal, newStats, activityName }) => {
           <IoMdCheckmark />
         </div>
         <div className="progressBar">
-          <CircularProgressbar
+          <CircularProgressbarWithChildren
+            value={percentage}
+            styles={buildStyles({
+              textColor: "#000",
+              textSize: "12px",
+              pathColor: "rgba(26, 156, 34)",
+            })}
+          >
+            <div className="fadeInText">
+              <h2>Well done!</h2>
+            </div>
+          </CircularProgressbarWithChildren>
+          {/* <CircularProgressbar
+            value={percentage}
             text="Well done!"
             styles={buildStyles({
               textColor: "#000",
               textSize: "12px",
               pathColor: "rgba(26, 156, 34)",
             })}
-          />
+          /> */}
         </div>
         <section className="saveData">
           <div className="activeTime">

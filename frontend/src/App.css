@@ -417,12 +417,12 @@ label {
   display: block;
 }
 
-.modeButton.workMode{
-  border: 1px solid rgba(247,114,25,255);
+.modeButton.workMode {
+  border: 1px solid rgba(247, 114, 25, 255);
 }
 
-.modeButton.breakMode{
-  border: 1px solid rgba(67,152,209,255);
+.modeButton.breakMode {
+  border: 1px solid rgba(67, 152, 209, 255);
 }
 
 /* Complete Modal */
@@ -465,7 +465,20 @@ label {
   color: rgba(26, 156, 34);
   font-size: 2rem;
 }
+.fadeInText {
+  animation: fadeIn 1.5s;
+}
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .saveData {
   margin: 25px 20px;
 }
