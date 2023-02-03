@@ -10,6 +10,11 @@ body {
   margin-bottom: 80px;
 }
 
+.App {
+  width: 375px;
+  margin: 0 auto;
+}
+
 /* Nav */
 
 footer {
@@ -17,6 +22,7 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
 nav ul {
   background-color: lightgrey;
   display: flex;

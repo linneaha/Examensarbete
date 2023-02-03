@@ -40,7 +40,7 @@ const CompleteActivity = ({ toggleCompleteModal, newStats, activityName }) => {
           <div className="dataFlexBox">
             <div>
               <p className="number">
-                {convertToMinutes(newStats.amountOfBreaks)}
+                {newStats.amountOfBreaks}
               </p>
               <p className="label">Breaks</p>
             </div>

@@ -84,6 +84,7 @@ const Stopwatch = () => {
   const stopTime = () => {
     setIsRunning(false);
     setIsBreak(false);
+    setTotalBreakTime(breakTime);
   };
 
   const startBreak = () => {
