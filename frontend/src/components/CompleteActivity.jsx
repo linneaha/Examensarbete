@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import {
-  CircularProgressbar,
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
@@ -52,15 +51,6 @@ const CompleteActivity = ({ toggleCompleteModal, newStats, activityName }) => {
               <h2>Well done!</h2>
             </div>
           </CircularProgressbarWithChildren>
-          {/* <CircularProgressbar
-            value={percentage}
-            text="Well done!"
-            styles={buildStyles({
-              textColor: "#000",
-              textSize: "12px",
-              pathColor: "rgba(26, 156, 34)",
-            })}
-          /> */}
         </div>
         <section className="saveData">
           <div className="activeTime">
