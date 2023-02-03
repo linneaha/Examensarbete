@@ -143,7 +143,7 @@ const Stopwatch = () => {
       </div>
       <div className="progressBarWrapper">
         <CircularProgressbarWithChildren
-          value={mode === "work" && time / 36000}
+          value={time / 36000}
           strokeWidth={8}
           styles={buildStyles({
             pathColor: orange,
@@ -154,13 +154,13 @@ const Stopwatch = () => {
           Width here needs to be (100 - 2 * strokeWidth)% 
           in order to fit exactly inside the outer progressbar.
         */}
-          <div style={{ width: "83%" }}>
+          <div style={{ width: "82%" }}>
             <CircularProgressbarWithChildren
-              value={mode === "break" && breakTime / 36000}
+              value={breakTime / 36000}
+              strokeWidth="5"
               styles={buildStyles({
                 pathColor: blue,
                 tailColor: "rgba(255,255,255,.2)",
-                // trailColor: "transparent",
               })}
             >
               {mode === "work" ? (
