@@ -88,7 +88,7 @@ const Activities = () => {
       .get("http://localhost:3001/api/activities")
       .then((res) => setActivities(res.data))
       .catch((err) => console.log(err));
-  }, [openModal]);
+  }, []);
 
   return (
     <>

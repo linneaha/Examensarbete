@@ -15,6 +15,7 @@ const BarChart = ({ averageStatsForActivity }) => {
     datasets: [
       {
         label: "Active time",
+        borderRadius: 12,
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageActiveTime)
         ),
@@ -22,6 +23,7 @@ const BarChart = ({ averageStatsForActivity }) => {
       },
       {
         label: "Time at first break",
+        borderRadius: 12,
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageTotalTime)
         ),
@@ -35,6 +37,7 @@ const BarChart = ({ averageStatsForActivity }) => {
     datasets: [
       {
         label: "Break (min)",
+        borderRadius: 12,
         data: averageStatsForActivity.map((activity) =>
           convertToMinutes(activity.averageBreakTime)
         ),
@@ -48,6 +51,7 @@ const BarChart = ({ averageStatsForActivity }) => {
     datasets: [
       {
         label: "Amount of Breaks",
+        borderRadius: 12,
         data: averageStatsForActivity.map(
           (activity) => activity.averageAmountOfBreaks
         ),

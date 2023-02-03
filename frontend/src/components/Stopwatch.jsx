@@ -205,6 +205,7 @@ const Stopwatch = () => {
           toggleCompleteModal={toggleCompleteModal}
           newStats={newStats}
           activityName={activityName}
+          toggleModal={toggleModal}
         />
       )}
     </div>

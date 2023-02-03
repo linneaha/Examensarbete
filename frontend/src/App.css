@@ -37,6 +37,7 @@ nav li {
 }
 
 .navIcon {
+  color:rgb(66, 66, 66);
   font-size: 1.5em;
 }
 
@@ -441,6 +442,7 @@ label {
   height: 100vh;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.75);
+  /* transition: top 0.4s, opacity 0.4s; */
 }
 
 .completeModal {
@@ -458,7 +460,37 @@ label {
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
+  transition: top 0.4s, opacity 0.4s;
+  /* animation: slide-down 300ms ease-out forwards; */
+  
+}
+
+.completeModalBackdrop.open {
+  animation: mount 0.4s linear;
+}
+
+@keyframes mount {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.completeModalBackdrop.close {
+  animation: unmount 0.5s ease-in-out;
+}
+
+@keyframes unmount {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .completeText {

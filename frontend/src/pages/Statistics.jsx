@@ -44,8 +44,6 @@ const Statistics = () => {
         .reduce((prev, curr) => prev + curr) / stat.stats.length,
   }));
 
-  console.log(averageStatsForActivity);
-
   return (
     <div className="statsWrapper">
       <h1>Statistics</h1>
