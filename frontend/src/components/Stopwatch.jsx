@@ -6,6 +6,7 @@ import { IoMdCheckmark } from "react-icons/io";
 import { IoPlay, IoStop } from "react-icons/io5";
 import { MdOutlineFreeBreakfast, MdOutlineRefresh } from "react-icons/md";
 import {
+  CircularProgressbar,
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
@@ -142,6 +143,48 @@ const Stopwatch = () => {
       </div>
       <div className="progressBarWrapper">
         <CircularProgressbarWithChildren
+          value={mode === "work" && time / 36000}
+          strokeWidth={8}
+          styles={buildStyles({
+            pathColor: orange,
+            tailColor: "rgba(255,255,255,.2)",
+          })}
+        >
+          {/*
+          Width here needs to be (100 - 2 * strokeWidth)% 
+          in order to fit exactly inside the outer progressbar.
+        */}
+          <div style={{ width: "83%" }}>
+            <CircularProgressbarWithChildren
+              value={mode === "break" && breakTime / 36000}
+              styles={buildStyles({
+                pathColor: blue,
+                tailColor: "rgba(255,255,255,.2)",
+                // trailColor: "transparent",
+              })}
+            >
+              {mode === "work" ? (
+                <img
+                  src={activityIcon}
+                  className="stopwatchIcons"
+                  alt="clock icon"
+                />
+              ) : (
+                <img
+                  src="icons/coffee-cup.png"
+                  className="stopwatchIcons"
+                  alt="break icon"
+                />
+              )}
+              <div className="time">
+                {mode === "work"
+                  ? formatTime(time).formattedString
+                  : formatTime(breakTime).formattedString}
+              </div>
+            </CircularProgressbarWithChildren>
+          </div>
+        </CircularProgressbarWithChildren>
+        {/* <CircularProgressbarWithChildren
           value={mode === "work" ? time / 36000 : breakTime / 36000}
           styles={buildStyles({
             pathColor: mode === "work" ? orange : blue,
@@ -166,7 +209,7 @@ const Stopwatch = () => {
               ? formatTime(time).formattedString
               : formatTime(breakTime).formattedString}
           </div>
-        </CircularProgressbarWithChildren>
+        </CircularProgressbarWithChildren> */}
         <div>
           <button
             className={`modeButton ${mode === "work" ? "workMode" : ""}`}
