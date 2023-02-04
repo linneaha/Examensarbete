@@ -1,3 +1,5 @@
+import React from "react";
+
 const ActivityContext = React.createContext({
   activities: [],
   addActivity: (activity) => {},
