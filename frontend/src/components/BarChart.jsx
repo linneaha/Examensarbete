@@ -25,7 +25,7 @@ const BarChart = ({ averageStatsForActivity }) => {
         label: "Time at first break",
         borderRadius: 12,
         data: averageStatsForActivity.map((activity) =>
-          convertToMinutes(activity.averageTotalTime)
+          convertToMinutes(activity.averageTimeBeforeFirstBreak)
         ),
         backgroundColor: "rgba(151,211,230,255)",
       },
