@@ -184,21 +184,35 @@ const Stopwatch = () => {
       </div>
       <div className="buttonWrapper">
         {!isRunning && !isBreak ? (
-          <button className="controlButton" onClick={() => startRunning()}>
-            <IoPlay />
-          </button>
+          <div>
+            <button className="controlButton" onClick={() => startRunning()}>
+              <IoPlay />
+            </button>
+            <span>Start</span>
+          </div>
         ) : (
-          <button className="controlButton" onClick={() => stopTime()}>
-            <IoStop />
-          </button>
+          <div>
+            <button className="controlButton" onClick={() => stopTime()}>
+              <IoStop />
+            </button>
+            <span>Stop</span>
+          </div>
         )}
-        <button className="controlButton" onClick={() => resetTimer()}>
-          <MdOutlineRefresh />
-        </button>
-        <button className="controlButton" onClick={() => saveDataForActivity()}>
-          <IoMdCheckmark />
-        </button>
-        <div style={{ width: 150, marginLeft: 550 }}></div>
+        <div>
+          <button className="controlButton" onClick={() => resetTimer()}>
+            <MdOutlineRefresh />
+          </button>
+          <span>Reset</span>
+        </div>
+        <div>
+          <button
+            className="controlButton"
+            onClick={() => saveDataForActivity()}
+          >
+            <IoMdCheckmark />
+          </button>
+          <span>Done</span>
+        </div>
       </div>
       {toggleModal && (
         <CompleteActivity

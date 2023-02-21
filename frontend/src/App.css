@@ -37,7 +37,7 @@ nav li {
 }
 
 .navIcon {
-  color:rgb(66, 66, 66);
+  color: rgb(66, 66, 66);
   font-size: 1.5em;
 }
 
@@ -380,6 +380,12 @@ label {
 .buttonWrapper {
   text-align: center;
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.buttonWrapper > div {
+  color: rgb(66, 65, 65);
 }
 
 .controlButton {
@@ -390,7 +396,7 @@ label {
   border-radius: 50%;
   height: 55px;
   width: 55px;
-  margin: 20px;
+  margin: 20px 20px 8px 20px;
   padding-top: 5px;
 }
 
@@ -464,7 +470,6 @@ label {
   z-index: 30;
   transition: top 0.4s, opacity 0.4s;
   /* animation: slide-down 300ms ease-out forwards; */
-  
 }
 
 .completeModalBackdrop.open {
