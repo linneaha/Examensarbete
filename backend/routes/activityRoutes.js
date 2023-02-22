@@ -9,7 +9,6 @@ const {
 } = require("../controllers/activityController");
 
 router.get("/", getActivities);
-router.get("/:id", getActivities);
 router.post("/", createActivity);
 router.put("/:id", updateActivity);
 router.delete("/:id", deleteActivity);
