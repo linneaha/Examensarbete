@@ -1,5 +1,7 @@
 # Examensarbete 
 
+Detta repo är för våran prototyp för en tidsplanerings app för personer med ADHD. Prototypen är uppbyggd med MongoDB Atlas, Express.js, React.js och Node.js.
+
 Länk till rapport: https://docs.google.com/document/d/1q_Xya_rkzkuAk08a-mokXhDw9OY8tnjCXt78MiKBHAA/edit?usp=sharing
 
 ## Abstract
